@@ -1,0 +1,17 @@
+@(request: play.mvc.Http.Request, persons: scala.collection.immutable.Seq[models.Person])
+
+@main("Welcome to Play") {
+  <link rel="stylesheet" href="@routes.Assets.at("stylesheets/styles.css")">
+  <script type='text/javascript' src='@routes.Assets.at("javascripts/index.coffee")'></script>
+
+  <form method="POST" action="@routes.PersonController.addPerson()">
+    <input type="text" name="name" placeholder="Enter person's name" required/>
+    <button>Add Person</button>
+  </form>
+
+  <ul id="persons">
+  @for(person <- persons) {
+    <li>@person.name</li>
+  }
+  </ul>
+}
